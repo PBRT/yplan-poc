@@ -6,5 +6,11 @@ module.exports = {
 	"fontSM": "10",
 	"fontMD": "14",
 	"fontLG": "18",
-	"fontXL": "22"
+	"fontXL": "22",
+	"navbarHeight": "56",
+	"cWhite": "#fff",
+	"cPrimary": "#EB5C4A",
+	"cText": "#606b70",
+	"cTitle": "#4b555a",
+	"cBackground": "#F1F1E9"
 };

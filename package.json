@@ -1,7 +1,7 @@
 {
   "name": "reactogo",
   "version": "1.0.0",
-  "description": "Kickstarter with react and webpack",
+  "description": "YPLAN MVP",
   "main": "app.js",
   "scripts": {
     "test": "test",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/PBRT/reactogo.git"
+    "url": "git://github.com/PBRT/yplanMVP.git"
   },
   "author": "PBRT",
   "license": "ISC",
@@ -50,6 +50,7 @@
     "react-masonry-component": "^1.0.4",
     "react-modal": "^0.5.0",
     "react-motion": "^0.3.0",
+    "react-router": "^1.0.0-rc3",
     "serve-favicon": "^2.3.0",
     "style-loader": "^0.12.3",
     "stylus": "^0.52.4",

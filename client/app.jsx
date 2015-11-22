@@ -2,9 +2,14 @@ import 'velocity-animate';
 import 'bootstrap-webpack';
 import './style/app.styl';
 
-// Components
-import ButtonMotion from './components/button-motion.jsx';
-import ButtonVelocity from './components/button-velocity.jsx';
+import { Router, Route, IndexRoute } from 'react-router';
+
+// Handlers
+import Index from './components/index/index.jsx';
+import Plan from './components/plan/plan.jsx';
+import Profile from './components/profile/profile.jsx';
+import Home from './components/home/home.jsx';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 var s = getStyle();
 
@@ -18,16 +23,14 @@ class App extends React.Component {
       isTablet: this.isTablet(),
       isDesktop: this.isDesktop(),
       isTouchDevice: this.isTouchDevice(),
-      scrollPosition: window.pageYOffset,
     };
     this.isMobile = this.isMobile.bind(this);
     this.isTablet = this.isTablet.bind(this);
     this.isDesktop = this.isDesktop.bind(this);
     this.isTouchDevice = this.isTouchDevice(this);
-    this.handleScroll = this.handleScroll.bind(this);
     this.handleStyle = this.handleStyle.bind(this);
     this.handleResize = this.handleResize.bind(this);
-    this.debouncedHandleResize = _.debounce(() => {this.handleResize();}, 100);
+    this.debouncedHandleResize = _.debounce(() => {this.handleResize(); }, 100);
   }
   getChildContext() {
     return {
@@ -36,7 +39,6 @@ class App extends React.Component {
       isDesktop: this.state.isDesktop,
       isTouchDevice: this.state.isTouchDevice,
       hasBeenResized: this.state.hasBeenResized,
-      scrollPosition: this.state.scrollPosition,
       s: this.handleStyle,
     };
   }
@@ -52,9 +54,6 @@ class App extends React.Component {
   isTouchDevice() {
     return 'ontouchstart' in window // works on most browsers
       || 'onmsgesturechange' in window; // works on ie10
-  }
-  handleScroll() {
-    this.setState({scrollPosition: window.pageYOffset});
   }
   handleResize() {
     this.setState({
@@ -103,21 +102,14 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div style={s.container}>
-        <div className='text-center title'>reacToGO</div>
-        <div className='text-center subtitle'>Including webpack, react, velocity, reactmotion, bootstrap, stylus</div>
-        <div className='row no-padding' style={s.row}>
-          <div className='col-xs-3 col-xs-offset-3 no-padding'>
-            React Motion animation
-            <ButtonMotion />
-          </div>
-          <div className='col-xs-3 no-margin'>
-            Velocity JS animation
-            <ButtonVelocity />
-          </div>
-        </div>
-
-      </div>
+      <Router history={createBrowserHistory()}>
+        <Route path='/' component={Index}>
+          <IndexRoute component={Home}/>
+          <Route path='/home' component={Home}/>
+          <Route path='/plan' component={Plan}/>
+          <Route path='/profile' component={Profile}/>
+        </Route>
+      </Router>
     );
   }
 }
@@ -125,8 +117,8 @@ class App extends React.Component {
 function getStyle() {
   return {
     container: {
-      marginTop: 100,
       textAlign: 'center',
+      marginTop: UI.navbarHeight,
     },
     row: {
       marginTop: 70,
@@ -140,8 +132,7 @@ App.childContextTypes = {
   isDesktop: React.PropTypes.bool.isRequired,
   isTouchDevice: React.PropTypes.bool.isRequired,
   hasBeenResized: React.PropTypes.bool.isRequired,
-  scrollPosition: React.PropTypes.number.isRequired,
   s: React.PropTypes.func.isRequired,
 };
 
-React.render (<App/>,document.body);
+React.render(<App />, document.body);

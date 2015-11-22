@@ -26,7 +26,7 @@ var config = {
       { test: /\.js?$/, loader: 'babel', exclude: /(node_modules)/ },
       { test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/},
       { test: /\.(png|jpg|svg)?$/, loader: 'file-loader', exclude: /node_modules/},
-      { test: /\.otf$/, loader: 'file-loader', exclude: /node_modules/},
+      { test: /\.(otf|woff2)$/, loader: 'file-loader', exclude: /node_modules/},
       { test: /\.(styl|css)$/, loader: 'style-loader!css-loader!stylus-loader' , exclude: /(node_modules)/},
     ]
   },
