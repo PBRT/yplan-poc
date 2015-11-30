@@ -1,15 +1,16 @@
 var s = getStyle();
 
 import { Link } from 'react-router';
-// Main class - App
+import ReactDOM from 'react-dom';
+
 export default class LinkComp extends React.Component {
   constructor() {
     super();
     this.handleHover = this.handleHover.bind(this);
   }
   handleHover(active) {
-    $(React.findDOMNode(this)).velocity('stop');
-    $(React.findDOMNode(this)).velocity({
+    $(ReactDOM.findDOMNode(this)).velocity('stop');
+    $(ReactDOM.findDOMNode(this)).velocity({
       color: active ? UI.cPrimary : UI.cText,
       opacity: active ? 1 : 0.8
     }, 200);
@@ -44,3 +45,10 @@ function getStyle() {
 LinkComp.contextTypes = {
   s: React.PropTypes.func.isRequired,
 };
+
+LinkComp.displayName = 'LinkComp';
+LinkComp.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  link: React.PropTypes.string.isRequired,
+};
+

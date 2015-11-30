@@ -1,14 +1,16 @@
 var s = getStyle();
 
-// Main class - App
 export default class Module extends React.Component {
   constructor() {
     super();
     this.handleHover = this.handleHover.bind(this);
   }
   handleHover(active){
-    $(React.findDOMNode(this.refs.subcontainer)).velocity('stop');
-    $(React.findDOMNode(this.refs.subcontainer)).velocity({boxShadowBlur: active ? 6 : 0}, 200);
+    $(this.refs.subcontainer).velocity('stop');
+    $(this.refs.subcontainer).velocity({boxShadowBlur: active ? 6 : 0}, 200);
+  }
+  componentDidMount() {
+    $(this.refs.subcontainer).velocity({opacity: 1}, {duration: 400});
   }
   render() {
     return (
@@ -39,6 +41,7 @@ function getStyle() {
       boxShadow: '0 0 0 0 rgba(0,0,0,0.1)',
       marginBottom: 20,
       display: 'inline-block',
+      opacity: 0,
     },
     imageContainer: {
       width: '100%',
@@ -57,4 +60,10 @@ function getStyle() {
 
 Module.contextTypes = {
   s: React.PropTypes.func.isRequired,
+};
+
+Module.displayName = 'Module';
+
+Module.propTypes = {
+  item: React.PropTypes.object.isRequired,
 };

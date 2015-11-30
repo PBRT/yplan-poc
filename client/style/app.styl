@@ -44,4 +44,32 @@ body, html
   height: 100%
   background-color: #f1f1e9
 
+.spinner-path
+  stroke-dasharray: 1000
+  stroke-dashoffset: 1000
+  animation: dash 2.5s linear alternate infinite
+
+
+@keyframes dash
+  0% {
+    stroke-dashoffset: 1000;
+    fill: #f1f1e9;
+  }
+
+  5% {
+    stroke-dashoffset: 1000;
+    fill: #f1f1e9;
+  }
+
+  90% {
+    stroke-dashoffset: 500;
+    fill: #EA5E4C;
+  }
+
+  100% {
+    stroke-dashoffset: 500;
+    fill: #EA5E4C;
+  }
+
+
 @require "variables"

@@ -1,17 +1,16 @@
+import Header from '../header/header.jsx';
+import RouteTransition from '../routeTransition.jsx';
+
 var s = getStyle();
 
-import Header from '../header/header.jsx';
-
-// Main class - App
 export default class Index extends React.Component {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <div style={s.container}>
         <Header />
-        {this.props.children}
+        <RouteTransition pathname={this.props.location.pathname}>
+          {this.props.children}
+        </RouteTransition>
       </div>
     );
   }
@@ -24,9 +23,17 @@ function getStyle() {
       backgroundColor: UI.cBackground,
       marginTop: UI.navbarHeight,
     },
+    title: {
+      textAlign: 'center',
+      padding: '20px 0px 0px',
+      fontSize: 30,
+      color: UI.cTitle,
+    },
   };
 }
 
 Index.contextTypes = {
   s: React.PropTypes.func.isRequired,
 };
+
+Index.displayName = 'Index';

@@ -1,6 +1,5 @@
 var s = getStyle();
 
-// Main class - App
 export default class Profile extends React.Component {
   constructor() {
     super();
@@ -12,15 +11,15 @@ export default class Profile extends React.Component {
           <div style={s.title}>Profile Page</div>
         </div>
         <div className='row no-margin' style={this.context.s(s.tileContainer)}>
-          <div className='col-sm-6'>
-            <div style={this.context.s(s.imageTile)}>
-              Image
-            </div>
+          <div className='col-sm-6' style={this.context.s(s.imageTile)}>
+            <img src={require('./assets/avatar.png')} style={this.context.s(s.avatar)}/>
+            <div style={this.context.s(s.field)}>Master of London</div>
           </div>
-          <div className='col-sm-6'>
-            <div style={this.context.s(s.profileTile)}>
-              Profile tile
-            </div>
+          <div className='col-sm-6' style={this.context.s(s.profileTile)}>
+            <div style={this.context.s(s.field)}>M. Francis Cabrel</div>
+            <div style={this.context.s(s.field)}>You love Music, Theatre and Goodies</div>
+            <div style={this.context.s(s.field)}>You are a LONDONER and a youngster</div>
+            <div style={this.context.s(s.field)}>You attempt to 4 events so far!</div>
           </div>
         </div>
       </div>
@@ -52,14 +51,51 @@ function getStyle() {
       },
     },
     imageTile: {
-      backgroundColor: UI.cWhite,
-      height: 400,
-      marginBottom: 30,
+      textAlign: 'center',
+      display: 'block',
+      verticalAlign: 'middle',
+      float: 'initial',
+      tablet: {
+        display: 'inline-block',
+        float: 'none',
+      },
+      desktop: {
+        display: 'inline-block',
+        float: 'none',
+      },
     },
     profileTile: {
-      backgroundColor: UI.cWhite,
-      height: 400,
       marginBottom: 30,
+      paddingTop: 50,
+      display: 'block',
+      verticalAlign: 'middle',
+      float: 'initial',
+      textAlign: 'center',
+      tablet: {
+        display: 'inline-block',
+        textAlign: 'left',
+        float: 'none',
+      },
+      desktop: {
+        display: 'inline-block',
+        textAlign: 'left',
+        float: 'none',
+      },
+    },
+    avatar: {
+      width: 100,
+      marginBottom: 20,
+      tablet: {
+        width: 100,
+      },
+      desktop: {
+        width: 300,
+      },
+    },
+    field: {
+      color: UI.cText,
+      fontSize: UI.fontLG,
+      padding: 10,
     },
   };
 }
@@ -67,3 +103,5 @@ function getStyle() {
 Profile.contextTypes = {
   s: React.PropTypes.func.isRequired,
 };
+
+Profile.displayName = 'Profile';

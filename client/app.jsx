@@ -1,23 +1,24 @@
 import 'velocity-animate';
 import 'bootstrap-webpack';
 import './style/app.styl';
+import ReactDOM from 'react-dom';
 
 import { Router, Route, IndexRoute } from 'react-router';
 
 // Handlers
 import Index from './components/index/index.jsx';
-import Plan from './components/plan/plan.jsx';
+import Film from './components/film/film.jsx';
+import Theatre from './components/theatre/theatre.jsx';
 import Profile from './components/profile/profile.jsx';
 import Home from './components/home/home.jsx';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-
-var s = getStyle();
 
 // Main class - App
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentRoute: '/',
       hasBeenResized: false,
       isMobile: this.isMobile(),
       isTablet: this.isTablet(),
@@ -64,14 +65,11 @@ class App extends React.Component {
     });
   }
   componentDidMount() {
-    React.initializeTouchEvents(true);
     this.handleResize();
     window.addEventListener('resize', this.debouncedHandleResize);
-    window.addEventListener('scroll', this.handleScroll);
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.debouncedHandleResize);
-    window.removeEventListener('scroll', this.handleScroll);
   }
   handleStyle(style) {
     let mobile = this.getViewportStyle(style);
@@ -106,7 +104,8 @@ class App extends React.Component {
         <Route path='/' component={Index}>
           <IndexRoute component={Home}/>
           <Route path='/home' component={Home}/>
-          <Route path='/plan' component={Plan}/>
+          <Route path='/film' component={Film}/>
+          <Route path='/theatre' component={Theatre}/>
           <Route path='/profile' component={Profile}/>
         </Route>
       </Router>
@@ -114,25 +113,13 @@ class App extends React.Component {
   }
 }
 
-function getStyle() {
-  return {
-    container: {
-      textAlign: 'center',
-      marginTop: UI.navbarHeight,
-    },
-    row: {
-      marginTop: 70,
-    },
-  };
-}
-
 App.childContextTypes = {
+  hasBeenResized: React.PropTypes.bool.isRequired,
+  isDesktop: React.PropTypes.bool.isRequired,
   isMobile: React.PropTypes.bool.isRequired,
   isTablet: React.PropTypes.bool.isRequired,
-  isDesktop: React.PropTypes.bool.isRequired,
   isTouchDevice: React.PropTypes.bool.isRequired,
-  hasBeenResized: React.PropTypes.bool.isRequired,
   s: React.PropTypes.func.isRequired,
 };
 
-React.render(<App />, document.body);
+ReactDOM.render(<App />, document.getElementById('app'));
