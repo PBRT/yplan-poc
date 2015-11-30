@@ -13,7 +13,7 @@ export default class Home extends React.Component {
         <div style={this.context.s(s.content)}>
           Proof of concept of the YPLAN app navigation using React-Motion for route transitions.
         </div>
-        <a style={this.context.s(s.subcontent)} href='http://github.com/PBRT' target='_blank'>
+        <a style={this.context.s(s.subcontent)} href='https://github.com/PBRT/yplan-poc' target='_blank'>
           <div>Check the codebase on GitHub</div>
           <img src={require('./assets/git.png')} style={s.git} />
         </a>
