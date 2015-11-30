@@ -8,9 +8,7 @@ import { Theatres } from 'api.js';
 export default class Theatre extends React.Component {
   constructor() {
     super();
-    this.state = {
-      isLoading: true,
-    };
+    this.state = {isLoading: true};
     this.renderModules = this.renderModules.bind(this);
   }
   componentDidMount() {

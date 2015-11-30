@@ -1,31 +1,26 @@
 var s = getStyle();
 
-export default class Profile extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <div style={this.context.s(s.container)}>
-        <div className='row'>
-          <div style={s.title}>Profile Page</div>
+let Profile = (props, context) => {
+  return (
+    <div style={context.s(s.container)}>
+      <div className='row'>
+        <div style={s.title}>Profile Page</div>
+      </div>
+      <div className='row no-margin' style={context.s(s.tileContainer)}>
+        <div className='col-sm-6' style={context.s(s.imageTile)}>
+          <img src={require('./assets/avatar.png')} style={context.s(s.avatar)}/>
+          <div style={context.s(s.field)}>Master of London</div>
         </div>
-        <div className='row no-margin' style={this.context.s(s.tileContainer)}>
-          <div className='col-sm-6' style={this.context.s(s.imageTile)}>
-            <img src={require('./assets/avatar.png')} style={this.context.s(s.avatar)}/>
-            <div style={this.context.s(s.field)}>Master of London</div>
-          </div>
-          <div className='col-sm-6' style={this.context.s(s.profileTile)}>
-            <div style={this.context.s(s.field)}>M. Francis Cabrel</div>
-            <div style={this.context.s(s.field)}>You love Music, Theatre and Goodies</div>
-            <div style={this.context.s(s.field)}>You are a LONDONER and a youngster</div>
-            <div style={this.context.s(s.field)}>You attempt to 4 events so far!</div>
-          </div>
+        <div className='col-sm-6' style={context.s(s.profileTile)}>
+          <div style={context.s(s.field)}>M. Francis Cabrel</div>
+          <div style={context.s(s.field)}>You love Music, Theatre and Goodies</div>
+          <div style={context.s(s.field)}>You are a LONDONER and a youngster</div>
+          <div style={context.s(s.field)}>You attempt to 4 events so far!</div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 function getStyle() {
   return {
@@ -105,3 +100,6 @@ Profile.contextTypes = {
 };
 
 Profile.displayName = 'Profile';
+
+export default Profile;
+

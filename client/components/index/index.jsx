@@ -3,18 +3,16 @@ import RouteTransition from '../routeTransition.jsx';
 
 var s = getStyle();
 
-export default class Index extends React.Component {
-  render() {
-    return (
-      <div style={s.container}>
-        <Header />
-        <RouteTransition pathname={this.props.location.pathname}>
-          {this.props.children}
-        </RouteTransition>
-      </div>
-    );
-  }
-}
+let Index = (props) => {
+  return (
+    <div style={s.container}>
+      <Header />
+      <RouteTransition pathname={props.location.pathname}>
+        {props.children}
+      </RouteTransition>
+    </div>
+  );
+};
 
 function getStyle() {
   return {
@@ -35,5 +33,6 @@ function getStyle() {
 Index.contextTypes = {
   s: React.PropTypes.func.isRequired,
 };
-
 Index.displayName = 'Index';
+
+export default Index;

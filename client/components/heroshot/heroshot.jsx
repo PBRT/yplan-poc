@@ -1,20 +1,17 @@
 var s = getStyle();
 
-export default class Heroshot extends React.Component {
-  render() {
+let Heroshot = (props, context) => {
+  const containerStyle = _.extend(context.s(s.container), {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1)), url(${props.image})`,
+  });
 
-    const containerStyle = _.extend(this.context.s(s.container), {
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1)), url(${this.props.image})`,
-    });
-
-    return (
-      <div style={containerStyle}>
-        <div style={this.context.s(s.title)}>{this.props.title}</div>
-        <div style={this.context.s(s.subtitle)}>{this.props.subtitle}</div>
-      </div>
-    );
-  }
-}
+  return (
+    <div style={containerStyle}>
+      <div style={context.s(s.title)}>{props.title}</div>
+      <div style={context.s(s.subtitle)}>{props.subtitle}</div>
+    </div>
+  );
+};
 
 function getStyle() {
   return {
@@ -67,3 +64,5 @@ Heroshot.propTypes = {
   title: React.PropTypes.string.isRequired,
   subtitle: React.PropTypes.string.isRequired,
 };
+
+export default Heroshot;

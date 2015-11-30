@@ -2,25 +2,23 @@ var s = getStyle();
 
 import Heroshot from 'heroshot/heroshot.jsx';
 
-export default class Home extends React.Component {
-  render() {
-    return (
-      <div style={this.context.s(s.container)}>
-        <Heroshot
-          title='Live Your City'
-          subtitle='We uncover the best events every day'
-          image={require('./assets/hero.jpg')}/>
-        <div style={this.context.s(s.content)}>
-          Proof of concept of the YPLAN app navigation using React-Motion for route transitions.
-        </div>
-        <a style={this.context.s(s.subcontent)} href='https://github.com/PBRT/yplan-poc' target='_blank'>
-          <div>Check the codebase on GitHub</div>
-          <img src={require('./assets/git.png')} style={s.git} />
-        </a>
+let Home = (props, context) => {
+  return (
+    <div style={context.s(s.container)}>
+      <Heroshot
+        title='Live Your City'
+        subtitle='We uncover the best events every day'
+        image={require('./assets/hero.jpg')}/>
+      <div style={context.s(s.content)}>
+        Proof of concept of the YPLAN app navigation using React-Motion for route transitions.
       </div>
-    );
-  }
-}
+      <a style={context.s(s.subcontent)} href='https://github.com/PBRT/yplan-poc' target='_blank'>
+        <div>Check the codebase on GitHub</div>
+        <img src={require('./assets/git.png')} style={s.git} />
+      </a>
+    </div>
+  );
+};
 
 function getStyle() {
   return {
@@ -67,3 +65,5 @@ Home.contextTypes = {
 };
 
 Home.displayName = 'Home';
+
+export default Home;
