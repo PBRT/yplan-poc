@@ -10,7 +10,7 @@ let Header = (props, context) => {
         <div style={context.s(s.logo)}>
           <img
             style={context.s(s.img)}
-            src={require(context.isMobile ? './logo-mobile.png' : './logo.png')} />
+            src={require(context.isMobile ? './assets/logo-mobile.png' : './assets/logo.png')} />
         </div>
       </Link>
       <div className='separator'></div>

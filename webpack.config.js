@@ -22,9 +22,8 @@ var config = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loader: 'babel', exclude: /(node_modules)/, query: { presets:['es2015', 'react']}},
-      { test: /\.js?$/, loader: 'babel', exclude: /(node_modules)/ },
-      // { test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/},
+      { test: /\.(js|jsx)?$/, loader: 'babel', exclude: /(node_modules)/, query: { presets:['es2015', 'react']}},
+      { test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/},
       { test: /\.(png|jpg|svg|jpeg)?$/, loader: 'file-loader', exclude: /node_modules/},
       { test: /\.(otf|woff2)$/, loader: 'file-loader', exclude: /node_modules/},
       { test: /\.(styl|css)$/, loader: 'style-loader!css-loader!stylus-loader' , exclude: /(node_modules)/},

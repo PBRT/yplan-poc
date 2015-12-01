@@ -1,4 +1,4 @@
-const { path } = require('./path.js');
+import { path } from './path.js';
 
 let Spinner = () => {
   return (

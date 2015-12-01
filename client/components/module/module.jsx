@@ -21,7 +21,7 @@ export default class Module extends React.Component {
           onMouseLeave={this.handleHover.bind(null, false)}
           style={this.context.s(s.subcontainer)}>
           <div style={this.context.s(s.imageContainer)}>
-            <img src={require('./image.jpg')} style={this.context.s(s.image)} />
+            <img src={require('./assets/image.jpg')} style={this.context.s(s.image)} />
           </div>
           <div>
             <div style={this.context.s(s.event)}>{this.props.item.title}</div>
